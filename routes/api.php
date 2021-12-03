@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,20 @@ Route::post('/updateauth', [UsersController::class, 'update']);
 
 //API BARANG
 Route::post('/barang',[BarangController::class, 'create']);
+Route::post('/barang/{id}',[BarangController::class, 'destroy']);
 Route::get('/barang',[BarangController::class, 'index']);
 Route::get('/barang/{id}',[BarangController::class, 'show']);
+Route::post('/editbarang',[BarangController::class, 'edit']);
 //=======ENDAPI BARANG
+
+//API TRANSAKSI
+Route::get('transaksi',[TransaksiController::class,'gettransaksi']);
+Route::post('transaksi',[TransaksiController::class,'insertcart']);
+Route::get('sum',[TransaksiController::class,'sumcart']);
+Route::post('/hapustransaksi/{id}',[TransaksiController::class,'hapustransaksi']);
+Route::post('updatetransaksi',[TransaksiController::class,'updatetransaksi']);
+Route::post('/hapustransaksiselesai/{uid}',[TransaksiController::class,'hapustransaksiselesai']);
+Route::post('/checkout',[TransaksiController::class,'checkout']);
+Route::get('/getcheckout',[TransaksiController::class,'getcheckout']);
+Route::get('/sumcheckout',[TransaksiController::class,'sumcheckout']);
+//======ENDAPI TRANSAKSI
